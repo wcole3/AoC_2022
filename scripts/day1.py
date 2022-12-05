@@ -1,5 +1,5 @@
 """
-Scripts for the AoC 2022 event
+Script for the AoC 2022 event
 """
 
 
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     print("Running AoC 2022")
     # get the input file
     maxcal, elves = None, None
-    with open("data/day1.txt", "r") as f:
+    with open("./data/day1.txt", "r") as f:
         maxcal, elves = find_most_cal(f.readlines())
         print(f"Most calories: {maxcal}")
         print(f"Elves: {elves}")
