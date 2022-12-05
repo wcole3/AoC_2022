@@ -48,7 +48,6 @@ if __name__ == "__main__":
             # get the reward for the round
             reward = get_round_reward(line.strip())
             rev = get_revised_round_reward(line.strip())
-            print(f"Revised reward: {rev}")
             total += reward
             rev_total += rev
     print(f"Total reward: {total}")
