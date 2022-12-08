@@ -15,7 +15,7 @@ def find_start_packet(packet: str):
 def find_start_message(packet: str):
     # iterate over the string
     for i in range(len(packet)):
-        # check if the next 4 characters are unique
+        # check if the next 14 characters are unique
         if len(set(packet[i:i+14])) == 14:
             return i+14, packet[i:i+14]
     return None
