@@ -15,6 +15,8 @@ def get_letter_priority(c: chr) -> int:
     if i >= 97:
         return i - 96
     return i - 64 + 26
+
+
 def parse_grid(lines: list):
     # I feel like I knew a clever way to do this with zip/map at one point TODO
     grid = np.ones((len(lines), len(lines[0].strip())))
@@ -33,6 +35,7 @@ def parse_grid(lines: list):
             else:
                 grid[x][y] = get_letter_priority(lines[x][y])
     return grid, start, end
+
 
 # Apparently we're allowing large drops in elevation
 def get_neighbors(pos: tuple, grid):
@@ -64,6 +67,7 @@ def get_neighbors(pos: tuple, grid):
 # start with a simple distance manhattan distance
 def manhattan_distance(start, end):
     return abs(start[0] - end[0]) + abs(start[1] - end[1])
+
 
 # astar pathfinding
 def astar(start, end, grid, h):
@@ -125,6 +129,7 @@ def astar(start, end, grid, h):
     # return failure
     return None
 
+
 # print the path taken using < > ^ and v for the directions
 def print_path_on_grid(path, grid, end):
     # set all of the grid to periods
@@ -157,6 +162,7 @@ def print_path_on_grid(path, grid, end):
     grid[end[0]][end[1]] = "E"
     print(grid)
 
+
 if __name__ == '__main__':
     print("AoC 2022 Day 12 script")
     with open("../data/day12.txt", "r") as f:
@@ -168,7 +174,8 @@ if __name__ == '__main__':
         print(f"The length of the shortest path is {len(path) - 1}")
         # for part two we just apply this to all cells with elevation 1
         # and then find the min from those returned paths
-        possible_starts = [pos for x in range(grid.shape[0]) for y in range(grid.shape[1]) for pos in [(x, y)] if grid[x][y] == 1]
+        possible_starts = [pos for x in range(grid.shape[0]) for y in range(grid.shape[1]) for pos in [(x, y)] if
+                           grid[x][y] == 1]
         print(possible_starts)
         min_dist = np.Inf
         for start in possible_starts:
