@@ -46,6 +46,10 @@ class Monkey:
             if new % self.test == 0:
                 monkeys[self.test_true_target].items_held.append(new)
             else:
+                # just highlighting that this is the trick for part two
+                # We scale down the worry by the product of all the divisors
+                # This can be done (i think) because all the worry operations are increasing
+                # and by modulo-ing with the product divisor ensure that the worry doesn't overflow
                 monkeys[self.test_false_target].items_held.append(new % divisor_product)
         self.items_held = []
 
